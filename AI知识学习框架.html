@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI知识学习框架</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .tree {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        .node {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .children {
+            margin-left: 30px;
+            border-left: 2px solid #ddd;
+            padding-left: 10px;
+        }
+        .toggle {
+            margin-right: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .toggle:hover {
+            color: #2c3e50;
+            transform: scale(1.2);
+        }
+        .main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: default;
+            writing-mode: vertical-lr; /* 竖直排列文字 */
+            transform: rotate(0deg); /* 旋转文字方向 */
+            padding: 20px 10px;
+            border: none;
+            background-color: transparent;
+            align-self: center; /* 新增：确保标题在中间 */
+        }
+        .sub-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #34495e;
+        }
+        .leaf-node {
+            font-size: 16px;
+            color: #7f8c8d;
+            text-decoration: none; /* 移除链接下划线 */
+            color: inherit; /* 继承父元素颜色 */
+        }
+        .leaf-node:hover {
+            text-decoration: underline; /* 鼠标悬停时显示下划线 */
+        }
+    </style>
+</head>
+<body>
+
+<div class="tree">
+    <div class="node main-title">
+        AI学习知识框架
+    </div>
+    <div class="children">
+        <div class="node sub-title">
+            <span class="toggle" onclick="toggleNode(this)">-</span> 
+            <a href="基础知识.html" class="leaf-node">基础知识</a>
+            <div class="children">
+                <div class="node leaf-node">
+                    <a href="数学基础.html" class="leaf-node">数学基础</a>
+                </div>
+                <div class="node leaf-node">编程基础</div>
+            </div>
+        </div>
+        <div class="node sub-title">
+            <span class="toggle" onclick="toggleNode(this)">-</span> 机器学习
+            <div class="children">
+                <div class="node leaf-node">监督学习</div>
+                <div class="node leaf-node">无监督学习</div>
+                <div class="node leaf-node">强化学习</div>
+            </div>
+        </div>
+        <div class="node sub-title">
+            <span class="toggle" onclick="toggleNode(this)">-</span> 深度学习
+            <div class="children">
+                <div class="node leaf-node">神经网络</div>
+                <div class="node leaf-node">卷积神经网络</div>
+                <div class="node leaf-node">循环神经网络</div>
+                <div class="node leaf-node">生成对抗网络</div>
+            </div>
+        </div>
+        <div class="node sub-title">
+            <span class="toggle" onclick="toggleNode(this)">-</span> 应用领域
+            <div class="children">
+                <div class="node leaf-node">计算机视觉</div>
+                <div class="node leaf-node">自然语言处理</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleNode(toggle) {
+        const node = toggle.parentElement;
+        const children = node.querySelector('.children');
+        if (children.style.display === 'none') {
+            children.style.display = 'block';
+            toggle.textContent = '-';
+        } else {
+            children.style.display = 'none';
+            toggle.textContent = '+';
+        }
+    }
+
+    // 确保第一个大标题始终展开
+    const mainTitle = document.querySelector('.main-title');
+    mainTitle.onclick = null;
+    mainTitle.style.cursor = 'default';
+</script>
+
+</body>
+</html>
